@@ -3,8 +3,12 @@ import userController from '../controllers/userController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 const router = new Router();
 
-router.post('/registraton', userController.registration);
+router.post('/registration', userController.registration);
 router.post('/login', userController.login);
 router.get('/auth', authMiddleware ,userController.check);
+router.get('/activate:link', userController.activate)
+router.get('/refresh')
+router.post('/logout')
+router.get('/users')
 
 export default router;

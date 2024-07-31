@@ -8,12 +8,14 @@ import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { errorHandler } from './middleware/ErrorHandlingMiddleware.js';
+import cookieParser from 'cookie-parser';
 
 const __fileName = fileURLToPath(import.meta.url);
 const __dirname = dirname(__fileName);
 
 const app = express();
 app.use(cors()); // подключаем cors
+app.use(cookieParser())
 app.use(express.json()); // подключаем конвертацию json
 app.use(fileupload({})); // подключаем обработку изобрражений
 app.use(express.static(path.resolve(__dirname, 'static')));

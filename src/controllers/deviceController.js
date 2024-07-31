@@ -11,10 +11,24 @@ const __dirname = dirname(__filename);
 class DeviceController {
   async create(req, res, next) {
     try {
+      console.log('Request body:', req.body);
       let { subsection, name, price, typeId, brandId, stock, info } = req.body;
+      price = Number(price)
+      typeId = Number(typeId)
+      brandId = Number(brandId)
       const { imageUrl } = req.files;
       let fileName = uuidv4() + '.jpg';
       imageUrl.mv(path.resolve(__dirname, '..', 'static', fileName));
+
+      console.log({
+        subsection,
+        name,
+        price,
+        stock,
+        typeId,
+        brandId,
+        imageUrl: fileName,
+      })
       const device = await Device.create({
         subsection,
         name,

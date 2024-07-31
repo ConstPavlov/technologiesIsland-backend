@@ -6,7 +6,10 @@ export default (role) => {
       next();
     }
     try {
-      const token = req.headers.authorization.split(' ')[1]; // Bearer asalaasdas
+      const token = req.headers.authorization.split(' ')
+      [1]; // Bearer asalaasdas
+
+      console.log(token)
       if (!token) {
         return res.status(401).json({ message: 'Пользователь не авторизован' });
       }
